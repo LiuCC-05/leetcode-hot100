@@ -1,4 +1,4 @@
-# 141. 环形链表 (Linked List Cycle) 🎡
+# 004. 环形链表 (Linked List Cycle) 🎡
 
 ### 📝 题目概述
 给定一个链表，判断链表中是否有环。
