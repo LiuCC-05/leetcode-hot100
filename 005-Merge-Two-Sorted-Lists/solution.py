@@ -3,6 +3,8 @@
 #     def __init__(self, val=0, next=None):
 #         self.val = val
 #         self.next = next
+
+#迭代的方法
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
         """
@@ -53,3 +55,31 @@ class Solution(object):
         # 4. 返回虚拟头节点的下一个，即真正的合并后头节点
         return dummy.next
 
+'''递归方法
+class Solution(object):
+    def mergeTwoLists(self, list1, list2):
+        """
+        :type list1: Optional[ListNode]
+        :type list2: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        # 1. 递归出口 (Base Case)：剥到了洋葱的心
+        # 如果其中一个链表空了，直接返回另一个链表即可
+        if not list1:
+            return list2
+        if not list2:
+            return list1
+
+        # 2. 递归逻辑：谁小，谁就当“头”
+        if list1.val <= list2.val:
+            # list1 赢了，它作为当前的头节点
+            # 剩下的车厢（list1.next 和 list2）该怎么接？
+            # 重新交给这个函数去处理，处理完后挂在 list1.next 上
+            list1.next = self.mergeTwoLists(list1.next, list2)
+            return list1
+        else:
+            # list2 赢了，它作为当前的头节点
+            # 剩下的车厢（list1 和 list2.next）交给递归处理
+            list2.next = self.mergeTwoLists(list1, list2.next)
+            return list2
+'''
